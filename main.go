@@ -36,11 +36,11 @@ func autostart() {
 		fmt.Println(err)
 	}
 
-	// 2. Инициализируем автозапуск
+	// init autostart
 	app := &starter.App{
-		Name:        "focusback",             // Имя для plist-файла
-		DisplayName: "FocusBack Application", // Читаемое имя приложения
-		Exec:        []string{execPath},      // Путь к программе
+		Name:        "focusback", // name plist file
+		DisplayName: "FocusBack Application",
+		Exec:        []string{execPath}, // path to programm
 	}
 
 	if app.IsEnabled() {
