@@ -2,22 +2,23 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/pkg/browser"
 	hook "github.com/robotn/gohook"
 
 	"github.com/itchyny/volume-go"
 
-	"os"
-
 	starter "github.com/emersion/go-autostart"
+
+	"github.com/platilich/randomick"
 )
 
 func main() {
-	fmt.Println("started (command + 0)\nexit (cotrol + c)")
+	fmt.Println("started (command + x)\nexit (cotrol + c)")
 	autostart()
 
-	hook.Register(hook.KeyDown, []string{"command", "0"}, HideMyScreen)
+	hook.Register(hook.KeyDown, []string{"command", "x"}, HideMyScreen)
 
 	s := hook.Start()
 	<-hook.Process(s)
@@ -25,7 +26,9 @@ func main() {
 }
 
 func HideMyScreen(_ hook.Event) {
-	browser.OpenURL("https://ru.wikipedia.org/wiki/")
+	web := randomick.Choice("https://youtube.com", "https://google.com", "https://wikipedia.org")
+
+	browser.OpenURL(web)
 	volume.Mute()
 
 }
