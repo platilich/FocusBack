@@ -26,6 +26,7 @@ func main() {
 }
 
 func HideMyScreen(_ hook.Event) {
+	fmt.Println("fine!")
 	web := randomick.Choice("https://youtube.com", "https://google.com", "https://wikipedia.org")
 
 	browser.OpenURL(web)
